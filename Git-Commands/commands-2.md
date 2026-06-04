@@ -60,3 +60,29 @@ Hard reset: Delete last commit and discard changes completely.
 
 # Warning: deletes commit and local changes
 git reset --hard HEAD~1
+
+
+
+Recovering Lost Commits (Git Reflog)
+
+Purpose: Helps you recover commits even after reset, delete, or accidental changes.
+
+View all recent Git actions
+
+git reflog
+
+Example output:
+abc1234 HEAD@{0}: reset: moving to HEAD~1
+def5678 HEAD@{1}: commit: added login feature
+
+Restore a lost commit using reflog
+
+git checkout def5678
+
+Or create a new branch from a lost state
+
+git checkout -b recovery-branch def5678
+
+Move HEAD back to a safe commit
+
+git reset --hard def5678
